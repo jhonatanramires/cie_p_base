@@ -1,15 +1,15 @@
-# smallworld
+---
+title: How to use this template
+description: A brief guide on the things you'll find in this template
+pubDate: 2025-01-19
+tags:
+  - astro
+  - markdown
+  - template
+  - howto
+---
 
-_This is a template for the static site generator [Astro](https://astro.build/). Now updated for Astro 6!_
-
-I like Astro, but I don't like spending hours messing with customizations I don't need. This template is based on a few key principles for my own site:
-
-- I wanted a basic website with a single-author blog.
-- The website should incorporate accessible and usable elements.
-- Complex systems should be avoided in favor of simpler ones.
-- I should be able to easily understand what I see.
-
-The result is an Astro template that heavily limits the use of CSS classes, and maximizes the use of semantic HTML.
+This post explains how to use the `smallworld` template.
 
 ## Quickstart
 
@@ -20,7 +20,7 @@ npm run dev
 npm run build
 ```
 
-## Less quick start
+## How to use
 
 ### Install
 
@@ -58,9 +58,9 @@ Site-wide settings are stored in `src/settings.ts`. This is also where you can s
 
 ### Configure CSS
 
-The file `src/styles/main.scss` controls which CSS elements Pico CSS includes in the final site. See [the Pico CSS website](https://picocss.com/docs/sass) for information about these elements. 
+The file `src/styles/main.scss` controls which CSS elements Pico CSS includes in the final site. See [the Pico CSS website](https://picocss.com/docs/sass) for information about these elements.
 
-> Building your project may show deprecation warnings due to how Pico CSS writes its SASS files. These warnings are non-fatal and can be ignored for now.. 
+> Building your project may show deprecation warnings due to how Pico CSS writes its SASS files. These warnings are non-fatal and can be ignored for now..
 
 ### Add and edit pages
 
@@ -81,11 +81,3 @@ smallworld comes with a blog collection by default. To add a new post, create a 
 A post must have `title`, `description` and `pubDate` keywords in its frontmatter. `tags` are optional.
 
 To see a post template, see the file in `src/templates`.
-
-## Notes
-
-The examples in this README use NPM. Any Node.js package manager supported by Astro should work; I include a PNPM package file by default.
-
-## About Astro
-
-Want to learn more about Astro? Check out [their documentation](https://docs.astro.build) or jump into their [Discord server](https://astro.build/chat).

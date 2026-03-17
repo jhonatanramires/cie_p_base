@@ -1,0 +1,75 @@
+---
+import Base from "@layouts/Base.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import FormattedDate from "@components/FormattedDate.astro";
+import { date } from "astro/zod";
+
+type Post = CollectionEntry<"blog">;
+
+const posts = ((await getCollection("crm")).map(post => {
+  // Create a new Date from the existing string (or number) value
+  post.data.Semestre = new Date(post.data.Semestre);
+  return post;
+})).sort(
+  (a, b) => b.data.Semestre.valueOf() - a.data.Semestre.valueOf(),
+);
+
+const postByYear: {
+  [year: number]: Post[];
+} = {};
+
+posts.forEach((post) => {
+  const year = post.data.Semestre.getFullYear();
+  if (!postByYear[year]) {
+    postByYear[year] = [];
+  }
+  postByYear[year].push(post);
+});
+
+console.log(postByYear)
+
+
+//posts[0]["data"] = new Date(posts[0]["data"].Semestre)
+
+//console.log(posts[0]["data"].valueOf)
+
+---
+
+<Base title="Blog" description="List of blog posts">
+  <article>
+    <header>
+      <hgroup>
+        <h1>Proyectos Sede Orinoquia</h1>
+        <p>Base de proyectos de estudiantiles desarrollados en la sede Orinoquia, como parte de las actividades del 2026-1 del semillero</p>
+      </hgroup>
+    </header>
+    {
+      Object.keys(postByYear)
+        .sort((a, b) => parseInt(b) - parseInt(a))
+        .map((year) => (
+          <section id={year}>
+            <h2>{year}</h2>
+            <ul>
+              {postByYear[parseInt(year)].map((post: Post) => (
+                <li>
+                  <span>
+                    <FormattedDate date={post.data.Semestre} />
+                  </span>
+                  &#8195;
+                  <a href={`/blog/${post.id}`} class="contrast">
+                    {post.data["Nombre Proyecto"]}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+    }
+  </article>
+</Base>
+<style>
+  span {
+    display: inline-block;
+    min-width: 10ch;
+  }
+</style>

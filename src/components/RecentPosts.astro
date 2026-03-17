@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+
+const posts = ((await getCollection("crm")).map(post => {
+  // Create a new Date from the existing string (or number) value
+  post.data["Fecha Realización"] = new Date(post.data["Fecha Realización"]);
+  return post;
+})).sort(
+  (a, b) => b.data["Fecha Realización"].valueOf() - a.data.Semestre.valueOf(),
+);
+const maxPostsToDisplay = 3;
+const recentPosts = posts.slice(0, maxPostsToDisplay);
+---
+
+<section>
+  <h3>Proyectos Actualizados Recientemente</h3>
+  <div class="grid">
+    {
+      recentPosts.map((post) => (
+        <article>
+          <hgroup>
+            <h3>
+              <a href={`/blog/${post.id}`}>{post.data["Nombre Proyecto"]}</a>
+            </h3>
+            <p>
+              <time>
+                S: {post.data["Fecha Realización"].toISOString().substring(0, 7)}
+              </time>
+            </p>
+          </hgroup>
+          <p>{post.data["DescripciónCorta"]}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

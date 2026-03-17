@@ -1,0 +1,21 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+  <p>&copy; 2026-{currentYear} CCIEE</p>
+  <p>Nuestro sitio web es de codigo abierto, si tienes tiempo y animos, los aportes son totalmente bienvenidos :D</p>
+  <nav>
+    <ul>
+      <li><a href="https://github.com/jhonatanramires/cie_p_base">GitHub</a></li>
+      {/* Add other navbar entries here */}
+    </ul>
+  </nav>
+</footer>
+{/* CSS required to keep footer at the bottom of the page */}
+<style>
+  footer {
+    position: sticky;
+    top: 100vh;
+  }
+</style>

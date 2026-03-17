@@ -1,0 +1,21 @@
+---
+import NavLink from "./NavLink.astro";
+---
+
+<header>
+  <nav aria-label="Main">
+    <ul>
+      <li>
+        <a href="/">
+          <strong>CCIEE</strong>
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li><NavLink path="about">Sobre Nosotros</NavLink></li>
+      <li><NavLink path="blog">Blog</NavLink></li>
+      <li><NavLink path="projects">Proyectos Orinoquia</NavLink></li>
+      {/* Add other navbar entries here */}
+    </ul>
+  </nav>
+</header>
