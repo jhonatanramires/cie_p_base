@@ -31,5 +31,4 @@ const crm = defineCollection({
   })
 });
 
-
 export const collections = { blog, crm };
