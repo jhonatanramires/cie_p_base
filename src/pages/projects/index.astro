@@ -4,7 +4,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import { date } from "astro/zod";
 
-type Post = CollectionEntry<"blog">;
+type Post = any;
 
 const posts = ((await getCollection("crm")).map(post => {
   // Create a new Date from the existing string (or number) value

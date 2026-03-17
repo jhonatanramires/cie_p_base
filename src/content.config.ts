@@ -8,18 +8,16 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    // Transform string to Date object
     pubDate: z.coerce.date(),
     tags: z.array(z.string()).optional(),
   }),
 });
 
 const projects = defineCollection({
-  loader: glob({ base: "./src/content/blog", pattern: "**/*.md" }),
+  loader: glob({ base: "./src/content/projects", pattern: "**/*.md" }), // fixed path
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    // Transform string to Date object
     pubDate: z.coerce.date(),
     tags: z.array(z.string()).optional(),
   }),
@@ -28,7 +26,8 @@ const projects = defineCollection({
 const crm = defineCollection({
   loader: sheetLoader({
     document: "1NBs9RXAmMRJvqCXK5E8Yksg_c7rNGUM9",
+    // Add sheet and columns if needed
   })
 });
 
-export const collections = { blog, crm };
+export const collections = { blog, projects, crm };
