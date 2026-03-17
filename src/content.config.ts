@@ -28,7 +28,7 @@ const crm = defineCollection({
   loader: sheetLoader({
     document: "1NBs9RXAmMRJvqCXK5E8Yksg_c7rNGUM9",
     // Add sheet and columns if needed
-  })
+  }),
 });
 
 export const collections = { blog, projects, crm };
